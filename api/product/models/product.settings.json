@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "product",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nama": {
+      "type": "string"
+    },
+    "isShow": {
+      "type": "boolean"
+    },
+    "stok": {
+      "type": "integer"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "nama"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "user_id": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "ids"
+    }
+  }
+}
